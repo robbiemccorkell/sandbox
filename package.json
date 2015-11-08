@@ -1,7 +1,8 @@
 {
-  "name": "koa-test",
+  "name": "sandbox",
   "version": "1.0.0",
   "description": "",
+  "repositiory": "git://github.com/robbiemccorkell/sandbox",
   "main": "index.js",
   "dependencies": {
     "babel-core": "^6.1.2",
@@ -13,10 +14,11 @@
   "devDependencies": {
     "babel-eslint": "^4.1.4",
     "eslint": "^1.9.0",
-    "eslint-plugin-react": "^3.8.0"
+    "eslint-plugin-react": "^3.8.0",
+    "jasmine": "^2.3.2"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jasmine ."
   },
   "author": "",
   "license": "ISC"
