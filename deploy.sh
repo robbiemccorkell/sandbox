@@ -14,5 +14,5 @@ aws elasticbeanstalk create-application-version --application-name sandbox \
   --version-label $SHA1 --source-bundle S3Bucket=$EB_BUCKET,S3Key=$DOCKERRUN_FILE --region eu-west-1
 
 # Update Elastic Beanstalk environment to new version
-aws elasticbeanstalk update-environment --environment-name robbiemccorkell-sandbox \
+aws elasticbeanstalk update-environment --environment-name sandbox \
     --version-label $SHA1 --region eu-west-1
