@@ -18,7 +18,8 @@
     "jasmine": "^2.3.2"
   },
   "scripts": {
-    "test": "jasmine ."
+    "start": "node index.js",
+    "test": "jasmine"
   },
   "author": "",
   "license": "ISC"

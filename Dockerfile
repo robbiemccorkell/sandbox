@@ -23,4 +23,8 @@ COPY . $APP_DIR/
 
 EXPOSE 3000
 
-CMD ["node", "index.js"]
+COPY docker-entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
+
+CMD ["start"]
