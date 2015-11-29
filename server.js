@@ -1,6 +1,15 @@
 import koa from 'koa';
+import KoaJade from 'koa-jade';
 
-let app = koa();
+const app = koa();
+const jade = new KoaJade({
+  viewPath: './views',
+  debug: false,
+  pretty: false,
+  compileDebug: false,
+});
+
+app.use(jade.middleware);
 
 // x-response-time
 app.use(function*(next) {
@@ -10,17 +19,11 @@ app.use(function*(next) {
   this.set('X-Response-Time', ms + 'ms');
 });
 
-// logger
-app.use(function*(next) {
-  var start = new Date;
-  yield next;
-  var ms = new Date - start;
-  console.log(`${this.method} ${this.url} - ${ms}`);
-});
-
 // response
 app.use(function*() {
-  this.body = 'Hello World';
+  this.render('index', {
+    content: 'Hello world'
+  }, true)
 });
 
 app.listen(3000);
