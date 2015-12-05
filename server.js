@@ -1,5 +1,6 @@
 import koa from 'koa';
 import KoaJade from 'koa-jade';
+import serve from 'koa-static';
 import React from 'react';
 import { renderToString } from 'react-dom/server'
 import { match, RoutingContext } from 'react-router';
@@ -14,6 +15,7 @@ const jade = new KoaJade({
 });
 
 app.use(jade.middleware);
+app.use(serve('public'));
 
 // x-response-time
 app.use(function*(next) {
@@ -25,7 +27,7 @@ app.use(function*(next) {
 
 app.use(function*() {
   match(
-    { routes, location: this.request.url },
+    { routes: routes(), location: this.request.url },
     (error, redirectLocation, renderProps) => {
       if (error) {
         this.response.status = 500;
